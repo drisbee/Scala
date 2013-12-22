@@ -81,6 +81,19 @@ class Calculator(brand: String) {
 
 val calc = new Calculator("HP")
 
+//Inheritance
+class ScientificCalculator(brand: String) extends Calculator(brand) {
+  def log(m: Double, base: Double) = math.log(m) / math.log(base)
+}
+
+val nexus = new ScientificCalculator("Nexus")
+
+//Overloading methods
+class EvenMoreScientificCalculator(brand: String) extends ScientificCalculator(brand) {
+  def log(m: Int): Double = log(m, math.exp(1))
+  }
+val nexus = new EvenMoreScientificCalculator("Nexus")
+
 // Aside Functions vs Methods
 class C {
   var acc = 0
@@ -89,3 +102,35 @@ class C {
   }
 
 val c = new C
+
+
+//Abstract Classes
+
+abstract class Shape {
+  def getArea():Int
+  }
+
+class Circle(r: Int) extends Shape {
+  def getArea():Int = { r * r * 3 }
+  }
+
+val c = new Circle(5)
+
+//Traits
+
+trait Car {
+  val brand: String
+  }
+
+trait Shiny {
+  val shineRefraction: Int
+  }
+
+class BMW extends Car {
+  val brand = "BMW"
+  }
+
+class BMW extends Car with Shiny {
+  val brand = "BMW"
+  val shineRefraction = 12
+  }
