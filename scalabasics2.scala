@@ -85,8 +85,29 @@ def bigger(o: Any): Any = {
 //Matching on Classes
 /*Aan de hand van welke type van een class
   kan je verschillende acties laten uitvoeren.*/
+  /**
+   * A constructor
+   */
 
-def calcType(calc: Calculator) calc match {
-  case _ 
-          
+class Calculator(val brand: String,
+		 val model: String
+) {
+  
+  def add(m: Double, n: Double): Double = m + n
+  def min(m: Double, n: Double): Double = m - n
+  def mul(m: Double, n: Double): Double = m * n
+  def div(m: Double, n: Double): Double = m / n
+  
+}
+  
+
+val calc = new Calculator("hp", "20B")
+
+  def calcType(calc: Calculator) = calc match {
+    case _ if calc.brand == "hp" && calc.model == "20B" => "financial"
+    case _ if calc.brand == "hp" && calc.model == "48G" => "scientific"
+    case _ if calc.brand == "hp" && calc.model == "30B" => "business"
+    case _ => "unknown"
+  } 
+
 
